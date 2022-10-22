@@ -13,7 +13,7 @@ const Post = ({ data }) => {
           <Card.Text className="text-truncate">{data.text}</Card.Text>
           <div className="text-center">
             <Button as={Link} to={`post/${data._id}`} variant="dark">
-              Read
+              Edit
             </Button>
           </div>
         </Card.Body>
