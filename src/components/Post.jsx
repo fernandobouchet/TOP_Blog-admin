@@ -31,8 +31,12 @@ const Post = ({ data, setPosts }) => {
             </Button>
           </div>
         </Card.Body>
-        <Card.Footer style={{ textAlign: 'right' }} className="text-muted">
-          {data.date_formatted}
+        <Card.Footer
+          style={{ textAlign: 'right' }}
+          className="d-flex justify-content-around text-muted"
+        >
+          Date: {data.date_formatted}
+          <span>{data.published ? 'Published' : 'Not published'}</span>
         </Card.Footer>
       </Card>
     </>

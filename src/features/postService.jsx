@@ -12,7 +12,7 @@ const config = {
 
 const getPosts = async () => {
   try {
-    const result = await axios.get(`${API_URL}/post`);
+    const result = await axios.get(`${API_URL}/post/all`);
     if (result.status === 200) {
       return result.data;
     } else {
