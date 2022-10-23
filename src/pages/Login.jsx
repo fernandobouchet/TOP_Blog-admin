@@ -19,9 +19,9 @@ function Login({ setAdmin }) {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await adminService.login(formData);
+    adminService.login(formData);
     setAdmin(JSON.parse(localStorage.getItem('user')));
   };
 

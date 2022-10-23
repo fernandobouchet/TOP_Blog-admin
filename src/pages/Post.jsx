@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 import Divider from '../components/Divider';
 import PostForm from '../components/PostForm';
 
-const Post = () => {
+const Post = ({ setPosts }) => {
   const { id } = useParams();
 
   const [post, setPostData] = useState();
@@ -25,7 +25,7 @@ const Post = () => {
       {post ? (
         <Container style={{ flex: '1' }}>
           <Container className="text-center">
-            <PostForm post={post} />
+            <PostForm post={post} setPosts={setPosts} />
           </Container>
           <Divider />
           <Container className="text-center">

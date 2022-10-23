@@ -16,11 +16,11 @@ const Home = () => {
   return (
     <>
       {posts ? (
-        <Container style={{ flex: '1' }}>
+        <Container style={{ flex: '1' }} className={'mx-auto my-5'}>
           <Row xs={1} md={2} className="g-4">
             {posts.map((post) => (
               <Col key={post.id}>
-                <Post data={post} />
+                <Post data={post} setPosts={setPosts} />
               </Col>
             ))}
           </Row>

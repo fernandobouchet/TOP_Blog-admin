@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
+import postService from '../features/postService';
 
-const Post = ({ data }) => {
+const Post = ({ data, setPosts }) => {
+  const removePost = (id) => {
+    setPosts((prevState) => prevState.filter((thisPost) => thisPost.id !== id));
+  };
+
   return (
     <>
       <Card>
@@ -11,9 +16,18 @@ const Post = ({ data }) => {
             By {data.author}
           </Card.Subtitle>
           <Card.Text className="text-truncate">{data.text}</Card.Text>
-          <div className="text-center">
-            <Button as={Link} to={`post/${data._id}`} variant="dark">
+          <div className="d-flex justify-content-evenly">
+            <Button as={Link} to={`post/${data.id}`} variant="primary">
               Edit
+            </Button>
+            <Button
+              onClick={() => {
+                postService.deletePost(data.id);
+                removePost(data.id);
+              }}
+              variant="danger"
+            >
+              Delete
             </Button>
           </div>
         </Card.Body>
