@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import adminService from '../features/adminService';
 
-function Login() {
+function Login({ setAdmin }) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -19,9 +19,10 @@ function Login() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    adminService.login(formData);
+    await adminService.login(formData);
+    setAdmin(JSON.parse(localStorage.getItem('user')));
   };
 
   return (

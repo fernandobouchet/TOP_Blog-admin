@@ -14,7 +14,7 @@ function App() {
       {admin && <Header />}
       <Routes>
         {!admin ? (
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login setAdmin={setAdmin} />} />
         ) : (
           <>
             <Route path="/" element={<Home />} />

@@ -6,7 +6,7 @@ const login = async (credentials) => {
   try {
     const result = await axios.post(`${API_URL}/admin/login`, credentials);
     if (result.status === 200) {
-      localStorage.setItem('user', JSON.stringify(result.data));
+      localStorage.setItem('user', JSON.stringify(result.data.token));
       return result.data;
     } else {
       return null;
