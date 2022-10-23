@@ -25,17 +25,15 @@ const Comment = ({ comment, setPostData }) => {
           </div>
           <p className="card-text text-start mt-2">{comment.text}</p>
           <Divider />
-          {comment.id && (
-            <Button
-              variant="danger"
-              onClick={() => {
-                commentService.deleteComment(comment.id);
-                deleteComment(comment.id);
-              }}
-            >
-              Delete
-            </Button>
-          )}
+          <Button
+            variant="danger"
+            onClick={() => {
+              commentService.deleteComment(comment.id);
+              deleteComment(comment.id);
+            }}
+          >
+            Delete
+          </Button>
         </Card.Body>
       </Card>
     </>

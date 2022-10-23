@@ -1,25 +1,13 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://blogapi.fly.dev';
+
 const user = JSON.parse(localStorage.getItem('user'));
 
 const config = {
   headers: {
     Authorization: `Bearer ${user?.token}`,
   },
-};
-
-const sendComment = async (data) => {
-  try {
-    const result = await axios.post(`${API_URL}/message`, data);
-    if (result.status === 200) {
-      return result.data;
-    } else {
-      console.log('Unknow error');
-    }
-  } catch (error) {
-    console.log(error);
-  }
 };
 
 const deleteComment = async (id) => {
@@ -35,6 +23,6 @@ const deleteComment = async (id) => {
   }
 };
 
-const commentService = { sendComment, deleteComment };
+const commentService = { deleteComment };
 
 export default commentService;

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import postService from '../features/postService';
 import { Container } from 'react-bootstrap';
 import Comment from '../components/Comment';
-import CreateComment from '../components/CreateComment';
 import Loading from '../components/Loading';
 import Divider from '../components/Divider';
 
@@ -23,8 +22,8 @@ const Post = () => {
   return (
     <>
       {post ? (
-        <>
-          <Container className="text-center" style={{ flex: '1' }}>
+        <Container style={{ flex: '1' }}>
+          <Container className="text-center">
             <h1>{post.title}</h1>
             <p>{post.text}</p>
           </Container>
@@ -39,11 +38,7 @@ const Post = () => {
               />
             ))}
           </Container>
-          <Divider />
-          <Container>
-            <CreateComment setPostData={setPostData} />
-          </Container>
-        </>
+        </Container>
       ) : (
         <Loading />
       )}
