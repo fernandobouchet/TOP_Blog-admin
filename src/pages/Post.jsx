@@ -5,12 +5,13 @@ import { Container } from 'react-bootstrap';
 import Comment from '../components/Comment';
 import Loading from '../components/Loading';
 import Divider from '../components/Divider';
+import PostForm from '../components/PostForm';
 
 const Post = () => {
   const { id } = useParams();
 
   const [post, setPostData] = useState();
-  console.log(post);
+
   useEffect(() => {
     postService.getPostById(id).then((post) => {
       setTimeout(() => {
@@ -24,8 +25,7 @@ const Post = () => {
       {post ? (
         <Container style={{ flex: '1' }}>
           <Container className="text-center">
-            <h1>{post.title}</h1>
-            <p>{post.text}</p>
+            <PostForm post={post} />
           </Container>
           <Divider />
           <Container className="text-center">
