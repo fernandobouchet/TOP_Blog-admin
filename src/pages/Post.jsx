@@ -11,7 +11,7 @@ const Post = () => {
   const { id } = useParams();
 
   const [post, setPostData] = useState();
-
+  console.log(post);
   useEffect(() => {
     postService.getPostById(id).then((post) => {
       setTimeout(() => {
@@ -32,7 +32,11 @@ const Post = () => {
           <Container className="text-center">
             <h5>Comments ({post.messages.length}):</h5>
             {post.messages.map((comment, index) => (
-              <Comment key={comment.id || index} comment={comment} />
+              <Comment
+                key={comment.id || index}
+                comment={comment}
+                setPostData={setPostData}
+              />
             ))}
           </Container>
           <Divider />

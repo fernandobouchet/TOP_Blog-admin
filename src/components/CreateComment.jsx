@@ -56,6 +56,7 @@ const CreateComment = ({ setPostData }) => {
               id="username"
               value={username}
               onChange={handleOnChange}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -69,6 +70,7 @@ const CreateComment = ({ setPostData }) => {
               id="comment"
               value={text}
               onChange={handleOnChange}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-1">

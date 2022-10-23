@@ -7,14 +7,14 @@ import Login from './pages/Login';
 import { useState } from 'react';
 
 function App() {
-  const [admin, setAdmin] = useState();
+  const [admin, setAdmin] = useState(JSON.parse(localStorage.getItem('user')));
 
   return (
     <>
       {admin && <Header />}
       <Routes>
         {!admin ? (
-          <Route path="/" element={<Login setAdmin={setAdmin} />} />
+          <Route path="/" element={<Login />} />
         ) : (
           <>
             <Route path="/" element={<Home />} />
