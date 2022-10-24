@@ -49,6 +49,19 @@ const editPost = async (id, data) => {
   }
 };
 
+const createPost = async (data) => {
+  try {
+    const result = await axios.post(`${API_URL}/post`, data, config);
+    if (result.status === 200) {
+      return result.data;
+    } else {
+      console.log('Unknow error');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const deletePost = async (id) => {
   try {
     const result = await axios.delete(`${API_URL}/post/${id}`, config);
@@ -67,6 +80,7 @@ const postService = {
   getPostById,
   editPost,
   deletePost,
+  createPost,
 };
 
 export default postService;

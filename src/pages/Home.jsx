@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import Loading from '../components/Loading';
 import Post from '../components/Post';
 import postService from '../features/postService';
@@ -17,6 +18,11 @@ const Home = () => {
     <>
       {posts ? (
         <Container style={{ flex: '1' }} className={'mx-auto my-5'}>
+          <div className="d-flex justify-content-center mb-5">
+            <Button as={Link} to={'/post'}>
+              New post
+            </Button>
+          </div>
           <Row xs={1} md={2} className="g-4">
             {posts.map((post) => (
               <Col key={post.id}>

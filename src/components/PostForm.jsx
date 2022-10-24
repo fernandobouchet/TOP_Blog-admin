@@ -1,8 +1,11 @@
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import postService from '../features/postService';
+import { useNavigate } from 'react-router-dom';
 
 const PostForm = ({ post }) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     author: post.author,
     title: post.title,
@@ -23,6 +26,8 @@ const PostForm = ({ post }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     postService.editPost(post.id, formData);
+    navigate('/');
+    navigate(0);
   };
 
   return (
@@ -41,6 +46,7 @@ const PostForm = ({ post }) => {
             id="author"
             value={author}
             onChange={handleOnChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-1">
@@ -52,6 +58,7 @@ const PostForm = ({ post }) => {
             id="title"
             value={title}
             onChange={handleOnChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -65,6 +72,7 @@ const PostForm = ({ post }) => {
             id="text"
             value={text}
             onChange={handleOnChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">

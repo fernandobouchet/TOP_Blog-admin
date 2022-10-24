@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import { useState } from 'react';
+import NewPost from './pages/NewPost';
 
 function App() {
   const [admin, setAdmin] = useState(JSON.parse(localStorage.getItem('user')));
@@ -19,6 +20,7 @@ function App() {
           <>
             <Route path="/" element={<Home />} />
             <Route path="/post/:id" element={<Post />} />
+            <Route path="/post" element={<NewPost />} />
           </>
         )}
       </Routes>
