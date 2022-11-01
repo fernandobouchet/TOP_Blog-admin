@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://blogapi.fly.dev';
+const API_URL = 'http://blogapi.fly.dev';
 
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -46,7 +46,7 @@ const editPost = async (id, data) => {
   try {
     const result = await axios.put(`${API_URL}/post/${id}`, formData, config);
     if (result.status === 200) {
-      return result.data;
+      return result.formData;
     } else {
       console.log('Unknow error');
     }

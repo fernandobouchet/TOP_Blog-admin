@@ -41,6 +41,7 @@ const PostForm = ({ post }) => {
         style={{ maxWidth: '25rem' }}
         className="m-auto"
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
       >
         <Form.Group className="mb-1">
           <Form.Label htmlFor="author">Author</Form.Label>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import postService from '../features/postService';
-import arrayBufferToBase64 from '../../helpers/functions';
+import arrayBufferToBase64 from '../helpers/functions';
 
 const Post = ({ data, setPosts }) => {
   const removePost = (id) => {
