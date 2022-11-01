@@ -9,6 +9,7 @@ const PostForm = ({ post }) => {
   const [formData, setFormData] = useState({
     author: post.author,
     title: post.title,
+    image: post.image,
     text: post.text,
     published: post.published,
   });
@@ -19,7 +20,11 @@ const PostForm = ({ post }) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]:
-        e.target.type === 'checkbox' ? e.target.checked : e.target.value,
+        e.target.type === 'checkbox'
+          ? e.target.checked
+          : e.target.type === 'file'
+          ? e.target.files[0]
+          : e.target.value,
     }));
   };
 
@@ -73,6 +78,16 @@ const PostForm = ({ post }) => {
             value={text}
             onChange={handleOnChange}
             required
+          />
+        </Form.Group>
+        <Form.Group className="mb-1">
+          <Form.Label htmlFor="image">Image</Form.Label>
+          <Form.Control
+            type="file"
+            placeholder="Image"
+            name="image"
+            id="image"
+            onChange={handleOnChange}
           />
         </Form.Group>
         <Form.Group className="mb-3">

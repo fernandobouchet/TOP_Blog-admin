@@ -37,8 +37,14 @@ const getPostById = async (id) => {
 };
 
 const editPost = async (id, data) => {
+  const formData = new FormData();
+  formData.append('author', data.author);
+  formData.append('title', data.title);
+  formData.append('image', data.image);
+  formData.append('text', data.text);
+  formData.append('published', data.published);
   try {
-    const result = await axios.put(`${API_URL}/post/${id}`, data, config);
+    const result = await axios.put(`${API_URL}/post/${id}`, formData, config);
     if (result.status === 200) {
       return result.data;
     } else {
@@ -50,10 +56,16 @@ const editPost = async (id, data) => {
 };
 
 const createPost = async (data) => {
+  const formData = new FormData();
+  formData.append('author', data.author);
+  formData.append('title', data.title);
+  formData.append('image', data.image);
+  formData.append('text', data.text);
+  formData.append('published', data.published);
   try {
-    const result = await axios.post(`${API_URL}/post`, data, config);
+    const result = await axios.post(`${API_URL}/post`, formData, config);
     if (result.status === 200) {
-      return result.data;
+      return result.formData;
     } else {
       console.log('Unknow error');
     }

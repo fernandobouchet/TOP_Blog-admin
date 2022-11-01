@@ -10,6 +10,7 @@ const NewPost = () => {
   const [formData, setFormData] = useState({
     author: '',
     title: '',
+    image: '',
     text: '',
     published: false,
   });
@@ -20,7 +21,11 @@ const NewPost = () => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]:
-        e.target.type === 'checkbox' ? e.target.checked : e.target.value,
+        e.target.type === 'checkbox'
+          ? e.target.checked
+          : e.target.type === 'file'
+          ? e.target.files[0]
+          : e.target.value,
     }));
   };
 
@@ -39,6 +44,7 @@ const NewPost = () => {
             style={{ maxWidth: '25rem' }}
             className="m-auto"
             onSubmit={handleSubmit}
+            encType="multipart/form-data"
           >
             <Form.Group className="mb-1">
               <Form.Label htmlFor="author">Author</Form.Label>
@@ -74,6 +80,17 @@ const NewPost = () => {
                 name="text"
                 id="text"
                 value={text}
+                onChange={handleOnChange}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-1">
+              <Form.Label htmlFor="image">Image</Form.Label>
+              <Form.Control
+                type="file"
+                placeholder="Image"
+                name="image"
+                id="image"
                 onChange={handleOnChange}
                 required
               />

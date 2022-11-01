@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import postService from '../features/postService';
+import arrayBufferToBase64 from '../../helpers/functions';
 
 const Post = ({ data, setPosts }) => {
   const removePost = (id) => {
@@ -9,9 +10,15 @@ const Post = ({ data, setPosts }) => {
 
   return (
     <>
-      <Card>
+      <Card className="h-100">
+        <Card.Img
+          src={`data:image/png;base64,${arrayBufferToBase64(
+            data.image.data.data
+          )}`}
+          width="100px"
+        ></Card.Img>
         <Card.Body>
-          <Card.Title>{data.title}</Card.Title>{' '}
+          <Card.Title>{data.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             By {data.author}
           </Card.Subtitle>
