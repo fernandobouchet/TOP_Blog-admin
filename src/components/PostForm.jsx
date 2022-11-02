@@ -14,8 +14,8 @@ const PostForm = ({ post }) => {
     published: post.published,
   });
 
-  const { title, text, published, author } = formData;
-
+  const { title, text, image, published, author } = formData;
+  console.log(image);
   const handleOnChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -88,6 +88,7 @@ const PostForm = ({ post }) => {
             placeholder="Image"
             name="image"
             id="image"
+            files={image}
             onChange={handleOnChange}
           />
         </Form.Group>
@@ -101,7 +102,7 @@ const PostForm = ({ post }) => {
           />
         </Form.Group>
         <Form.Group className="mb-1">
-          <Button variant="dark" type="submit">
+          <Button variant="primary" type="submit">
             Save
           </Button>
         </Form.Group>
