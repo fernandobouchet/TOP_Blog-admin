@@ -2,11 +2,8 @@ import { useState } from 'react';
 import postService from '../features/postService';
 import { Container } from 'react-bootstrap';
 import { Form, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 
 const NewPost = () => {
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     author: '',
     title: '',
@@ -28,12 +25,10 @@ const NewPost = () => {
           : e.target.value,
     }));
   };
-  console.log(formData);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     postService.createPost(formData);
-    navigate('/');
-    navigate(0);
   };
 
   return (

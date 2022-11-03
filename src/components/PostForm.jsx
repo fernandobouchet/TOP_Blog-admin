@@ -1,11 +1,8 @@
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import postService from '../features/postService';
-import { useNavigate } from 'react-router-dom';
 
 const PostForm = ({ post }) => {
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     author: post.author,
     title: post.title,
@@ -14,8 +11,8 @@ const PostForm = ({ post }) => {
     published: post.published,
   });
 
-  const { title, text, image, published, author } = formData;
-  console.log(image);
+  const { title, text, published, author } = formData;
+
   const handleOnChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -31,8 +28,6 @@ const PostForm = ({ post }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     postService.editPost(post.id, formData);
-    navigate('/');
-    navigate(0);
   };
 
   return (
@@ -88,7 +83,6 @@ const PostForm = ({ post }) => {
             placeholder="Image"
             name="image"
             id="image"
-            files={image}
             onChange={handleOnChange}
           />
         </Form.Group>

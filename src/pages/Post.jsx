@@ -14,11 +14,9 @@ const Post = ({ setPosts }) => {
 
   useEffect(() => {
     postService.getPostById(id).then((post) => {
-      setTimeout(() => {
-        setPostData(post);
-      }, 500);
+      setPostData(post);
     });
-  }, []);
+  }, [post]);
 
   return (
     <>

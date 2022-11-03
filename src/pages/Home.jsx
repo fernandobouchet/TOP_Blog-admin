@@ -10,9 +10,9 @@ const Home = () => {
 
   useEffect(() => {
     postService.getPosts().then((posts) => {
-      setTimeout(() => setPosts(posts), 500);
+      setPosts(posts);
     });
-  }, []);
+  }, [posts]);
 
   return (
     <>
