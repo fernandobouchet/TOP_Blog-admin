@@ -12,7 +12,7 @@ const Home = () => {
     postService.getPosts().then((posts) => {
       setPosts(posts);
     });
-  }, [posts]);
+  }, []);
 
   return (
     <>

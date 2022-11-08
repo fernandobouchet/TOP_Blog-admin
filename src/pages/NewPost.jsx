@@ -1,26 +1,25 @@
-import { useState } from 'react';
-import postService from '../features/postService';
-import { Container } from 'react-bootstrap';
-import { Form, Button } from 'react-bootstrap';
+import { useState } from "react";
+import postService from "../features/postService";
+import { Container } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const NewPost = () => {
   const [formData, setFormData] = useState({
-    author: '',
-    title: '',
-    image: '',
-    text: '',
+    title: "",
+    image: "",
+    text: "",
     published: false,
   });
 
-  const { title, text, published, author } = formData;
+  const { title, text, published } = formData;
 
   const handleOnChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]:
-        e.target.type === 'checkbox'
+        e.target.type === "checkbox"
           ? e.target.checked
-          : e.target.type === 'file'
+          : e.target.type === "file"
           ? e.target.files[0]
           : e.target.value,
     }));
@@ -33,26 +32,14 @@ const NewPost = () => {
 
   return (
     <>
-      <Container style={{ flex: '1' }}>
+      <Container style={{ flex: "1" }}>
         <>
           <Form
-            style={{ maxWidth: '25rem' }}
+            style={{ maxWidth: "25rem" }}
             className="m-auto"
             onSubmit={handleSubmit}
             encType="multipart/form-data"
           >
-            <Form.Group className="mb-1">
-              <Form.Label htmlFor="author">Author</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Author"
-                name="author"
-                id="author"
-                value={author}
-                onChange={handleOnChange}
-                required
-              />
-            </Form.Group>
             <Form.Group className="mb-1">
               <Form.Label htmlFor="title">Title</Form.Label>
               <Form.Control
